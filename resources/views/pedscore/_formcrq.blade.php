@@ -1,14 +1,11 @@
-@extends('layouts.app')
-
-@section('title','crqmaster')
-
-@section('content')
 <div class="col-8 mx-auto mt-2">
     @if ( $message = Session::get('success'))
     <div calss = "alert alert-success">
         {{ $message }}
     </div>
     @endif
+
+
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -23,11 +20,10 @@
         <div class="col-sm-12">
         <form action="{{ url('pedscore/crqmaster') }}" method="post">
             <input type="hidden" name = "_token" value="{{ csrf_token() }}">
-                <h2> คะแนน CRQ </h2>
                 <div class="form-group">
                     <div class="form-group">
                         <label for="name">CRQ:  </label>
-                            <input type="text" class="form-control" id="crq_desc" name ="crq_desc" value="{{ old('crq_desc')}}">
+                            <input type="text" class="form-control" id="crq_desc" name ="crq_desc" value="{{ old('crq_desc',isset($crq)$crq->crq_desc)}}">
                    </div>
                 </div>
 
@@ -52,5 +48,3 @@
         </div>
     </div>
 </div> 
-@endsection
-
