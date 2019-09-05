@@ -23,14 +23,14 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="name">CRQ:  </label>
-                            <input type="text" class="form-control" id="crq_desc" name ="crq_desc" value="{{ old('crq_desc',isset($crq)$crq->crq_desc)}}">
+                            <input type="text" class="form-control" id="crq_desc" name ="crq_desc" value="{{ old('crq_desc',isset($crq) ? $crq->crq_desc : '')}}">
                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="text-inline">ชั้นปีที่:  </label>
                         @foreach($ayears as $ayear)
-                        @if( old('$ayear') == $ayear['id'])
+                        @if( old('$ayear',isset($crq)? $crq->ayear : '') == $ayear['id'])
                             <label class="radio-inline">
                                 <input type="radio" name="ayear" value = "{{ $ayear['id'] }}" checked>{{ $ayear['name']}}
                             </label>
