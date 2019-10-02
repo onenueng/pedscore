@@ -80,6 +80,8 @@ Route::get('/pedscore/index', function(){
 
 });
 
+
+
 Route::get('/pedscore/{id}', function($id){
 
     $crq[] = [ 'crq_id' => 1, 'crq_desc' => 'CRQ1'];
@@ -125,4 +127,17 @@ Route::put('/pedscore/{id}',function(Illuminate\Http\Request $request,$id ){
 
     App\Crqmastertb::find($id)->update($request->all());
     return redirect()->back()->with('success','Edited Successfully !!');
+});
+
+Route::get('/score/master', function () {
+    return view('score.score_master');
+});
+
+Route::get('/score/create', function () {
+    return view('score.score_create');
+});
+
+Route::get('/score/upload_files', function () {
+    
+    return view('score.upload_files');
 });
